@@ -1,18 +1,28 @@
 import * as React from 'react';
 import { Route, Link } from 'react-router-dom';
-import SubRoute from './test-route';
 import { hot } from 'react-hot-loader';
+import Home from './home';
+import About from './about';
+import Dashboard from './dashboard';
 
 const App = () => {
   return (
     <div>
       <ul>
         <li>
-          <Link to="/subroute">Sub route</Link>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
         </li>
       </ul>
       <hr />
-      <Route path="/subroute" render={props => <SubRoute text="test" {...props} />} />
+      <Route exact path="/" render={props => <Home />} />
+      <Route exact path="/about" render={props => <About />} />
+      <Route exact path="/dashboard" render={props => <Dashboard />} />
     </div>
   );
 };
