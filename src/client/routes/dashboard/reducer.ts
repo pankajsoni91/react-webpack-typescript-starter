@@ -1,8 +1,8 @@
 import { actionCreator, apiTypeCreator } from '../../utils/reducer';
 
-const PREFIX_TEST = 'TEST';
+const PREFIX_DASHBOARD = 'DASHBOARD';
 const types = {
-  ...apiTypeCreator(PREFIX_TEST),
+  ...apiTypeCreator(PREFIX_DASHBOARD),
 };
 
 const INITIAL_STATE = {
@@ -15,7 +15,7 @@ const reducer = (state: any = INITIAL_STATE, action: { type: string; payload: an
   const { type } = action;
 
   switch (type) {
-    case types[PREFIX_TEST].FETCH: {
+    case types[PREFIX_DASHBOARD].FETCH: {
       return {
         ...state,
       };
@@ -27,11 +27,11 @@ const reducer = (state: any = INITIAL_STATE, action: { type: string; payload: an
 };
 
 const actions = {
-  fetch: actionCreator(types[PREFIX_TEST].FETCH),
-  success: actionCreator(types[PREFIX_TEST].SUCCESS),
-  error: actionCreator(types[PREFIX_TEST].ERROR),
+  fetch: actionCreator(types[PREFIX_DASHBOARD].FETCH),
+  success: actionCreator(types[PREFIX_DASHBOARD].SUCCESS),
+  error: actionCreator(types[PREFIX_DASHBOARD].ERROR),
 };
 
 export default reducer;
-export { actions, types, PREFIX_TEST };
+export { actions, types, PREFIX_DASHBOARD };
 export type IReducerState = any;
