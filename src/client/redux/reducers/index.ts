@@ -1,12 +1,13 @@
 import { combineReducers } from 'redux';
-import reducer, {
-  IReducerState as ITestReducerState,
-} from '../../routes/test/reducer';
+import {
+  reducer as dashboardReducer,
+  IReducerState as IDashboardReducerState,
+} from '../../routes/dashboard/reducer';
 
 export default combineReducers({
-  reducer,
+  dashboard: dashboardReducer,
 });
 
 export interface IAppState {
-  test: ITestReducerState;
+  test: IDashboardReducerState;
 }

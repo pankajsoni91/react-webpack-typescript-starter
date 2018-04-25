@@ -1,9 +1,16 @@
 import { actionCreator, apiTypeCreator } from '../../utils/reducer';
-
+import { IAction } from '../../utils/types';
 const PREFIX_DASHBOARD = 'DASHBOARD';
 const types = {
   ...apiTypeCreator(PREFIX_DASHBOARD),
 };
+
+// TODO - need to check the possible value to replace any
+export interface IReducerState {
+  loading: boolean,
+  data: any,
+  error: any,
+}
 
 const INITIAL_STATE = {
   loading: false,
@@ -11,7 +18,7 @@ const INITIAL_STATE = {
   error: null,
 };
 
-const reducer = (state: any = INITIAL_STATE, action: { type: string; payload: any }): any => {
+const reducer = (state: IReducerState = INITIAL_STATE, action: IAction): IReducerState => {
   const { type } = action;
 
   switch (type) {
@@ -32,6 +39,4 @@ const actions = {
   error: actionCreator(types[PREFIX_DASHBOARD].ERROR),
 };
 
-export default reducer;
-export { actions, types, PREFIX_DASHBOARD };
-export type IReducerState = any;
+export { actions, types, PREFIX_DASHBOARD , reducer };
