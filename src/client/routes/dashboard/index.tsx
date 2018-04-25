@@ -4,9 +4,16 @@ import { connect, Dispatch } from 'react-redux';
 import { IAppState } from '../../redux/reducers';
 import { actions } from './reducer';
 
-const Dashboard = () => {
-  return <div>Dashboard page</div>;
-};
+class Dashboard extends React.Component<any,any>{
+  
+  componentWillMount(){
+    this.props.actions.fetch();
+  }
+
+  render(){
+    return <div>Dashboard page</div>;
+  }
+}
 
 const mapStateToProps = (data: IAppState) => ({ data });
 

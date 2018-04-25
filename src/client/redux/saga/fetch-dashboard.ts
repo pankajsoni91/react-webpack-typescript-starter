@@ -4,6 +4,7 @@ import { apiCaller } from '../../utils/saga';
 import { getDashboardData }  from '../../servcies/dashboard';
 
 function* worker() {
+  console.log('saga called');
   yield apiCaller(getDashboardData, actions.success, actions.error)();
 }
 
