@@ -37,3 +37,4 @@ const actions = {
 };
 
 export { actions, types, PREFIX_DASHBOARD , reducer };
+export type IReducerState  = IAPI<IDashboardData>;
