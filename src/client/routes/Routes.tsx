@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Route, Link } from 'react-router-dom';
-import SubRoute from './test-route';
+import SubRoute from './test';
 import { hot } from 'react-hot-loader';
 
 const App = () => {

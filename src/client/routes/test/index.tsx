@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import LodableDefault from './default';
 
