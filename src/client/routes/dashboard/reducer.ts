@@ -1,24 +1,21 @@
-import { actionCreator, apiTypeCreator } from '../../utils/reducer';
-import { IAction } from '../../utils/types';
+import { actionCreator, apiTypeCreator, IActionCreatorType ,IAPI} from '../../utils/reducer';
 const PREFIX_DASHBOARD = 'DASHBOARD';
 const types = {
   ...apiTypeCreator(PREFIX_DASHBOARD),
 };
 
 // TODO - need to check the possible value to replace any
-export interface IReducerState {
-  loading: boolean,
-  data: any,
-  error: any,
+export interface IDashboardData {
+  testData : string
 }
 
-const INITIAL_STATE = {
+const INITIAL_STATE :IAPI<IDashboardData> = {
   loading: false,
   data: undefined,
   error: null,
 };
 
-const reducer = (state: IReducerState = INITIAL_STATE, action: IAction): IReducerState => {
+const reducer = (state: IAPI<IDashboardData> = INITIAL_STATE, action: IActionCreatorType<object|string>): IAPI<IDashboardData> => {
   const { type } = action;
 
   switch (type) {
