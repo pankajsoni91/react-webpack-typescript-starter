@@ -7,7 +7,6 @@ interface IButton {
 export const Button = styledComponents.button`
   background: ${(props:IButton) => props.primary ? 'palevioletred' : 'white'};
   color: ${(props:IButton) => props.primary ? 'white' : 'palevioletred'};
-
   font-size: 1em;
   margin: 1em;
   padding: 0.25em 1em;

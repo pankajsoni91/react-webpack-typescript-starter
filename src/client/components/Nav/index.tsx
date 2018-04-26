@@ -6,12 +6,11 @@ export const Nav = styledComponents.ul`
     display: inline-block;
     margin: 10px;
     
-    a{
+    a {
       text-decoration:none;
     }
     
-
-    .active{
+    .active {
       text-decoration : underline;
     }
   }

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button } from 'client/components/Button';
 import { Wrapper } from 'client/components/Wrapper';
+
 const Home = () => {
   return (
     <Wrapper>
