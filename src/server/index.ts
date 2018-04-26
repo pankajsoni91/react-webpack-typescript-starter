@@ -7,11 +7,14 @@ const sourceDir = 'dist';
 
 const indexPage = resolve(__dirname, './index.html');
 app.use(express.static(sourceDir));
-app.get('/api',(req,res) => {
+
+// for api
+app.get('/api', (req, res) => {
   res.json({
-    value:10,
+    value: 10,
   });
 });
+// for index.html
 app.get('*', (req, res, next) => {
   console.log(req.originalUrl);
   res.sendFile(indexPage);
