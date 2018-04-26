@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
-import { IAppState } from 'client/redux/reducers';
 import { actions } from './reducer';
 
 // #TODO - props example need to be set
