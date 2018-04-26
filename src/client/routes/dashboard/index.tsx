@@ -1,44 +1,39 @@
 import * as React from 'react';
 import { Wrapper } from 'client/components/Wrapper';
 import { Button } from 'client/components/Button';
+import { bindActionCreators } from 'redux';
+import { connect, Dispatch } from 'react-redux';
+import { actions } from './reducer';
+// interface IState {
+// }
 
-interface IState {
-  counter: number;
-}
+// interface IProps {
 
-interface IProps {
-  counter: number;
-}
+// }
 
-class Dashboard extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
+class Dashboard extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
-    this.state = {
-      counter : props.counter || 0,
-    };
-  }
-
-  incrementCounter = () => {
-    this.setState((prevState: IState) => {
-      return {
-        counter : prevState.counter + 1,
-      };
-    });
   }
 
   render() {
-    const { counter } = this.state;
     return (
       <Wrapper>
-        <Button
-          onClick={this.incrementCounter}
-        >
-          +1
-        </Button>
-        <span>{counter}</span>
+        I am Dashboard
       </Wrapper>
     );
   }
 }
 
-export default Dashboard;
+const mapStateToProps = ({ dashboard }) => ({ dashboard });
+
+// TODO - need to check whether any need to be remove or not
+const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+  actions: {
+    fetch: bindActionCreators(actions.fetch, dispatch),
+    success: bindActionCreators(actions.success, dispatch),
+    error : bindActionCreators(actions.error, dispatch),
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
