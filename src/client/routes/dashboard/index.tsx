@@ -1,12 +1,43 @@
 import * as React from 'react';
 import { Wrapper } from 'client/components/Wrapper';
-// #TODO - props example need to be set
-class Dashboard extends React.Component{
-  componentWillMount() {
-    console.log(this.props);
+import { Button } from 'client/components/Button';
+
+interface IDashboardState {
+  counter: number;
+}
+
+interface IDashboardProps {
+  initCounter: number;
+}
+
+class Dashboard extends React.Component<IDashboardProps,IDashboardState>{
+  constructor(props:IDashboardProps) {
+    super(props);
+    this.state = {
+      counter : props.initCounter || 0,
+    };  
   }
+  
+  incrementCounter = () => {
+    this.setState((prevState:IDashboardState) => {
+      return {
+        counter : prevState.counter + 1,
+      };
+    });
+  }
+
   render() {
-    return <Wrapper>Dashboard page</Wrapper>;  
+    const { counter } = this.state; 
+    return (
+      <Wrapper>
+        <Button 
+          onClick={this.incrementCounter}
+        >
+          +1
+        </Button>
+        <span>{counter}</span>
+      </Wrapper>
+    );  
   }
 }
 
