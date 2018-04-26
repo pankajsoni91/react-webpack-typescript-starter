@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Wrapper } from 'client/components/Wrapper';
-import { Button } from 'client/components/Button';
+import { Wrapper } from 'components/Wrapper';
+import { Button } from 'components/Button';
 
 interface IState {
   counter: number;

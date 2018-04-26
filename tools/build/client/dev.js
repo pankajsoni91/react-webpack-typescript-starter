@@ -9,7 +9,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const root = process.cwd();
 const context = resolve(root,"./src/client");
-
 module.exports = merge(common(context), {
   entry: [
     "./index.tsx" // the entry point of our app
@@ -18,10 +17,6 @@ module.exports = merge(common(context), {
     filename: "[name].[hash].js",
     path: resolve(root,"./dist/static/"),
     publicPath: "/static/"
-  },
-  resolve: {
-    modules: ['node_modules', '.'],
-    extensions: ['.ts', '.tsx', '.js'],
   },
   devServer: {
     hot: true, // enable HMR on the server

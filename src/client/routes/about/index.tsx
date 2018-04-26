@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Wrapper } from 'client/components/Wrapper';
+import { Wrapper } from 'components/Wrapper';
 
 const About = () => {
   return (
