@@ -10,12 +10,16 @@ class Dashboard extends React.Component<any,any>{
     this.props.actions.fetch();
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps);
+  }
+
   render(){
     return <div>Dashboard page</div>;
   }
 }
 
-const mapStateToProps = (data: IAppState) => ({ data });
+const mapStateToProps = ({dashboard}) => ({dashboard});
 
 // TODO - need to check whether any need to be remove or not
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({

@@ -9,5 +9,5 @@ export default combineReducers({
 });
 
 export interface IAppState {
-  test: IDashboardReducerState;
+  dashboard: IDashboardReducerState;
 }
