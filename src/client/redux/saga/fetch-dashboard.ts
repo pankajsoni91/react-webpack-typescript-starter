@@ -1,4 +1,4 @@
-import { PREFIX_DASHBOARD, types, actions } from 'client/routes/dashboard/reducer';
+import { PREFIX_DASHBOARD, types, actions } from 'client/routes/Dashboard/reducer';
 import { takeLatest, select } from 'redux-saga/effects';
 import { apiCaller } from 'client/utils/saga';
 import { getDashboardData } from 'client/services/dashboard';
