@@ -9,9 +9,9 @@ const indexPage = resolve(__dirname, './index.html');
 app.use(express.static(sourceDir));
 
 // for api
-app.get('/api',(req,res) => {
+app.get('/api', (req, res) => {
   res.json({
-    value:10,
+    value: 10,
   });
 });
 // for index.html
