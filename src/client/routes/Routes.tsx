@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import Home from './home';
-import About from './about';
-import Dashboard from './dashboard';
+import Home from './Home';
+import About from './About';
+import Dashboard from './Dashboard';
 
 const App = () => {
   return (

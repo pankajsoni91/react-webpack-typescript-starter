@@ -1,4 +1,4 @@
-import { actionCreator, apiTypeCreator, IActionCreatorType ,IAPI} from '../../utils/reducer';
+import { actionCreator, apiTypeCreator, IActionCreatorType ,IAPI } from 'client/utils/reducer';
 const PREFIX_DASHBOARD = 'DASHBOARD';
 const types = {
   ...apiTypeCreator(PREFIX_DASHBOARD),
@@ -6,7 +6,7 @@ const types = {
 
 // TODO - need to check the possible value to replace any
 export interface IDashboardData {
-  testData : string
+  testData : string;
 }
 
 const INITIAL_STATE :IAPI<IDashboardData> = {
@@ -15,7 +15,8 @@ const INITIAL_STATE :IAPI<IDashboardData> = {
   error: null,
 };
 
-const reducer = (state: IAPI<IDashboardData> = INITIAL_STATE, action: IActionCreatorType<object|string>): IAPI<IDashboardData> => {
+const reducer = (state: IAPI<IDashboardData> = INITIAL_STATE,
+                 action: IActionCreatorType<object|string>): IAPI<IDashboardData> => {
   const { type } = action;
 
   switch (type) {

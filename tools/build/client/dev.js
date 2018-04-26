@@ -19,6 +19,10 @@ module.exports = merge(common(context), {
     path: resolve(root,"./dist/static/"),
     publicPath: "/static/"
   },
+  resolve: {
+    modules: ['node_modules', '.'],
+    extensions: ['.ts', '.tsx', '.js'],
+  },
   devServer: {
     hot: true, // enable HMR on the server
     proxy: {

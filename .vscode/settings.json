@@ -1,7 +1,7 @@
 {
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 10,
-  "tslint.autoFixOnSave": false,
+  "tslint.autoFixOnSave": true,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false
 }
