@@ -1,15 +1,15 @@
-import styledComponents  from 'styled-components';
+import styledComponents from 'styled-components';
 
 export const Nav = styledComponents.ul`
   li {
     list-style: none;
     display: inline-block;
     margin: 10px;
-    
+
     a {
       text-decoration:none;
     }
-    
+
     .active {
       text-decoration : underline;
     }

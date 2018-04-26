@@ -10,16 +10,16 @@ interface IProps {
   counter: number;
 }
 
-class Dashboard extends React.Component<IProps,IState>{
-  constructor(props:IProps) {
+class Dashboard extends React.Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       counter : props.counter || 0,
-    };  
+    };
   }
-  
+
   incrementCounter = () => {
-    this.setState((prevState:IState) => {
+    this.setState((prevState: IState) => {
       return {
         counter : prevState.counter + 1,
       };
@@ -27,17 +27,17 @@ class Dashboard extends React.Component<IProps,IState>{
   }
 
   render() {
-    const { counter } = this.state; 
+    const { counter } = this.state;
     return (
       <Wrapper>
-        <Button 
+        <Button
           onClick={this.incrementCounter}
         >
           +1
         </Button>
         <span>{counter}</span>
       </Wrapper>
-    );  
+    );
   }
 }
 

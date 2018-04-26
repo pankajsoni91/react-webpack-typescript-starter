@@ -1,4 +1,4 @@
-import styledComponents  from 'styled-components';
+import styledComponents from 'styled-components';
 
 export const Wrapper = styledComponents.div`
   font-size: 1.5em;
