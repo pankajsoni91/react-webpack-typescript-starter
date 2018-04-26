@@ -10,7 +10,7 @@
       "noImplicitAny": false,
       "declaration": true,
       "allowJs": false,
-      "outDir": "./dist/",
+      "outDir": "./../../dist/tmp/server",
       "baseUrl": ".",
       "jsx": "react",
       "lib": ["es5", "es6", "dom"]
