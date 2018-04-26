@@ -20,12 +20,6 @@ module.exports = merge(common(context), {
     path: dist,
     libraryTarget: 'commonjs2',
   },
-  resolve: {
-    modules: [
-      context, 'node_modules'
-    ],
-    extensions: ['.js', '.ts', '.json'],
-  },
   mode: 'development',
   externals: [nodeExternals()],
   node: {

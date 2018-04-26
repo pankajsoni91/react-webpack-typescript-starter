@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from 'client/components/Button';
-import { Wrapper } from 'client/components/Wrapper';
+import { Button } from 'components/Button';
+import { Wrapper } from 'components/Wrapper';
 
 const Home = () => {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, NavLink } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import { Nav } from 'client/components/Nav';
+import { Nav } from 'components/Nav';
 import Home from './Home';
 import About from './About';
 import Dashboard from './Dashboard';
