@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { bindActionCreators } from 'redux';
-
+import { Wrapper } from 'client/components/Wrapper';
 // #TODO - props example need to be set
 class Dashboard extends React.Component{
   componentWillMount() {
     console.log(this.props);
   }
   render() {
-    return <div>Dashboard page</div>;  
+    return <Wrapper>Dashboard page</Wrapper>;  
   }
 }
 

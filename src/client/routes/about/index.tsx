@@ -1,7 +1,7 @@
 import * as React from 'react';
-
+import { Wrapper } from 'client/components/Wrapper';
 const About = () => {
-  return <div>About Page</div>;
+  return <Wrapper>This is about seccion</Wrapper>;
 };
 
 export default About;

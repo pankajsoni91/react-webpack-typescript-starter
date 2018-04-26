@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
+import { Nav } from  'client/components/Nav';
 import Home from './Home';
 import About from './About';
 import Dashboard from './Dashboard';
@@ -8,17 +9,17 @@ import Dashboard from './Dashboard';
 const App = () => {
   return (
     <div>
-      <ul>
+      <Nav>
         <li>
-          <Link to="/">Home</Link>
+          <NavLink exact={true} to="/" activeClassName="active">Home</NavLink>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <NavLink to="/about" activeClassName="active">About</NavLink>
         </li>
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <NavLink to="/dashboard" activeClassName="active">Dashboard</NavLink>
         </li>
-      </ul>
+      </Nav>
       <hr />
       <Route exact path="/" render={props => <Home />} />
       <Route exact path="/about" render={props => <About />} />
