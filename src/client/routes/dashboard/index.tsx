@@ -2,24 +2,24 @@ import * as React from 'react';
 import { Wrapper } from 'client/components/Wrapper';
 import { Button } from 'client/components/Button';
 
-interface IDashboardState {
+interface IState {
   counter: number;
 }
 
-interface IDashboardProps {
-  initCounter: number;
+interface IProps {
+  counter: number;
 }
 
-class Dashboard extends React.Component<IDashboardProps,IDashboardState>{
-  constructor(props:IDashboardProps) {
+class Dashboard extends React.Component<IProps,IState>{
+  constructor(props:IProps) {
     super(props);
     this.state = {
-      counter : props.initCounter || 0,
+      counter : props.counter || 0,
     };  
   }
   
   incrementCounter = () => {
-    this.setState((prevState:IDashboardState) => {
+    this.setState((prevState:IState) => {
       return {
         counter : prevState.counter + 1,
       };

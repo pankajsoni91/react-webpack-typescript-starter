@@ -23,7 +23,7 @@ const App = () => {
       <hr />
       <Route exact path="/" render={props => <Home />} />
       <Route exact path="/about" render={props => <About />} />
-      <Route exact path="/dashboard" render={props => <Dashboard initCounter={10}/>} />
+      <Route exact path="/dashboard" render={props => <Dashboard counter={10}/>} />
     </div>
   );
 };
