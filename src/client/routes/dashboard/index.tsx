@@ -7,13 +7,23 @@ import { actions } from './reducer';
 // interface IState {
 // }
 
-// interface IProps {
+interface IProps {
+  dashboard: any;
+  actions: any;
+}
 
-// }
-
-class Dashboard extends React.Component<any, any> {
-  constructor(props: any) {
+class Dashboard extends React.Component<IProps, any> {
+  constructor(props: IProps) {
     super(props);
+  }
+
+  componentWillMount() {
+    this.props.actions.fetch()
+    // console.log(this.props.actions.fetch());
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
   }
 
   render() {

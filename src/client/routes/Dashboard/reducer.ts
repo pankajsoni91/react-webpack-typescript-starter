@@ -1,4 +1,4 @@
-import { actionCreator, apiTypeCreator, IActionCreatorType , IAPI } from 'client/utils/reducer';
+import { actionCreator, apiTypeCreator, IActionCreatorType , IAPI } from '../../utils/reducer';
 const PREFIX_DASHBOARD = 'DASHBOARD';
 const types = {
   ...apiTypeCreator(PREFIX_DASHBOARD),
@@ -6,23 +6,38 @@ const types = {
 
 // TODO - need to check the possible value to replace any
 export interface IDashboardData {
-  testData: string;
+  value: string
 }
 
 const INITIAL_STATE: IAPI<IDashboardData> = {
   loading: false,
-  data: undefined,
+  data: null,
   error: null,
 };
 
-const reducer = (state: IAPI<IDashboardData> = INITIAL_STATE,
-                 action: IActionCreatorType<object|string>): IAPI<IDashboardData> => {
-  const { type } = action;
+const reducer = (state: IAPI<IDashboardData> = INITIAL_STATE, action: IActionCreatorType<object|IDashboardData>): IAPI<IDashboardData> => {
+  const { type , payload } = action;
 
   switch (type) {
     case types[PREFIX_DASHBOARD].FETCH: {
       return {
         ...state,
+        loading: true,
+      };
+    }
+
+    case types[PREFIX_DASHBOARD].SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        data: <IDashboardData>payload,
+      };
+    }
+
+    case types[PREFIX_DASHBOARD].ERROR: {
+      return {
+        ...state,
+        error: payload,
       };
     }
 
