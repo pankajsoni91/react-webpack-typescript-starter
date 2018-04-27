@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Routes from './routes/Routes';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import configureStore from 'client/redux/store/configure-store';
+import configureStore from 'redux/store/configure-store';
 
 const rootEl = document.getElementById('root');
 
@@ -13,5 +13,5 @@ render(
       <Routes />
     </BrowserRouter>
   </Provider>,
-  rootEl,
+  rootEl
 );
