@@ -44,4 +44,3 @@ const actions = {
 };
 
 export { actions, types, PREFIX_COUNTER, reducer };
-export type IReducerState = IState;
