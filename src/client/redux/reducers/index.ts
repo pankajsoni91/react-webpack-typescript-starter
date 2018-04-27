@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 import {
   reducer as dashboardReducer,
-  IReducerState as IDashboardReducerState,
-} from 'client/routes/Dashboard/reducer';
+  IReducerState as IDashboardReducerState
+} from 'routes/Dashboard/reducer';
 
 export const rootReducer = combineReducers({
-  dashboard: dashboardReducer,
+  dashboard: dashboardReducer
 });
 
 export interface IAppState {

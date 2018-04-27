@@ -1,10 +1,11 @@
 import { put, call } from 'redux-saga/effects';
+
 export function apiCaller<K, F>(
   api: (k: K) => Promise<F>,
   success: Function,
-  failure: Function,
+  failure: Function
 ) {
-  return function* (...args: any[]) {
+  return function*(...args: any[]) {
     try {
       const result = yield call(
         api,
@@ -13,8 +14,9 @@ export function apiCaller<K, F>(
         args[2],
         args[3],
         args[4],
-        args[5],
+        args[5]
       );
+
       if (success) {
         yield put(success(result));
       } else {
