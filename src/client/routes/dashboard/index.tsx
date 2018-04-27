@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { Wrapper } from 'components/Wrapper';
 import { Button } from 'components/Button';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
 import { actions } from './reducer';
+import WithLoader from 'components/WithLoader';
+import DashboardInfo from './components/DashboardInfo';
+const DashboardInfoWrapper = WithLoader(DashboardInfo);
 
 interface IProps {
   dashboard: any;
@@ -19,12 +21,10 @@ class Dashboard extends React.Component<IProps, any> {
     this.props.actions.fetch();
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
-  }
-
   render() {
-    return <Wrapper>I am Dashboard</Wrapper>;
+    const { loading, data } = this.props.dashboard;
+    console.log('loading', loading);
+    return <DashboardInfoWrapper loading={loading} data={data} />;
   }
 }
 
