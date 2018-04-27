@@ -1,51 +1,35 @@
-import {
-  actionCreator,
-  apiTypeCreator,
-  IActionCreatorType,
-  IAPI
-} from 'utils/reducer';
-const PREFIX_DASHBOARD = 'DASHBOARD';
+import { actionCreator } from 'utils/reducer';
+
+const PREFIX_COUNTER = 'COUNTER';
 const types = {
-  ...apiTypeCreator(PREFIX_DASHBOARD)
+  [PREFIX_COUNTER]: {
+    UPDATE: 'UPDATE',
+    RESET: 'RESET'
+  }
 };
 
-// TODO - need to check the possible value to replace any
-export interface IDashboardData {
-  value: string;
+export interface IState {
+  counter: number;
 }
 
-const INITIAL_STATE: IAPI<IDashboardData> = {
-  loading: false,
-  data: null,
-  error: null
+const INITIAL_STATE: IState = {
+  counter: 0
 };
 
-const reducer = (
-  state: IAPI<IDashboardData> = INITIAL_STATE,
-  action: IActionCreatorType<object | IDashboardData>
-): IAPI<IDashboardData> => {
+const reducer = (state: IState = INITIAL_STATE, action: any): IState => {
   const { type, payload } = action;
 
   switch (type) {
-    case types[PREFIX_DASHBOARD].FETCH: {
+    case types[PREFIX_COUNTER].UPDATE: {
       return {
         ...state,
-        loading: true
+        counter: payload
       };
     }
 
-    case types[PREFIX_DASHBOARD].SUCCESS: {
+    case types[PREFIX_COUNTER].RESET: {
       return {
-        ...state,
-        loading: false,
-        data: <IDashboardData>payload
-      };
-    }
-
-    case types[PREFIX_DASHBOARD].ERROR: {
-      return {
-        ...state,
-        error: payload
+        ...INITIAL_STATE
       };
     }
 
@@ -55,10 +39,9 @@ const reducer = (
 };
 
 const actions = {
-  fetch: actionCreator(types[PREFIX_DASHBOARD].FETCH),
-  success: actionCreator(types[PREFIX_DASHBOARD].SUCCESS),
-  error: actionCreator(types[PREFIX_DASHBOARD].ERROR)
+  update: actionCreator(types[PREFIX_COUNTER].UPDATE),
+  reset: actionCreator(types[PREFIX_COUNTER].RESET)
 };
 
-export { actions, types, PREFIX_DASHBOARD, reducer };
-export type IReducerState = IAPI<IDashboardData>;
+export { actions, types, PREFIX_COUNTER, reducer };
+export type IReducerState = IState;

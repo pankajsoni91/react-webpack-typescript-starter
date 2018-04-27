@@ -2,13 +2,12 @@ import * as React from 'react';
 import { Button } from 'components/Button';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
-import { actions } from './reducer';
-import WithLoader from 'components/WithLoader';
-import DashboardInfo from './components/DashboardInfo';
-const DashboardInfoWrapper = WithLoader(DashboardInfo);
+import { Wrapper } from 'components/Wrapper';
+
+import { actions, IState } from './reducer';
 
 interface IProps {
-  dashboard: any;
+  dashboard: IState;
   actions: any;
 }
 
@@ -17,25 +16,38 @@ class Dashboard extends React.Component<IProps, any> {
     super(props);
   }
 
-  componentWillMount() {
-    this.props.actions.fetch();
+  componentDidMount() {
+    this.props.actions.reset();
   }
 
+  updateCounter = () => {
+    this.props.actions.update(this.props.dashboard.counter + 1);
+  };
+
+  resetCounter = () => {
+    this.props.actions.reset();
+  };
+
   render() {
-    const { loading, data } = this.props.dashboard;
-    console.log('loading', loading);
-    return <DashboardInfoWrapper loading={loading} data={data} />;
+    const { counter } = this.props.dashboard;
+    return (
+      <Wrapper>
+        <div>{counter}</div>
+        <Button onClick={this.updateCounter}>Update Counter</Button>
+        <Button onClick={this.resetCounter} primary>
+          Reset Counter
+        </Button>
+      </Wrapper>
+    );
   }
 }
 
 const mapStateToProps = ({ dashboard }) => ({ dashboard });
 
-// TODO - need to check whether any need to be remove or not
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: {
-    fetch: bindActionCreators(actions.fetch, dispatch),
-    success: bindActionCreators(actions.success, dispatch),
-    error: bindActionCreators(actions.error, dispatch)
+    update: bindActionCreators(actions.update, dispatch),
+    reset: bindActionCreators(actions.reset, dispatch)
   }
 });
 
