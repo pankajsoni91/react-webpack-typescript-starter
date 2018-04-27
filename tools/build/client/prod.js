@@ -5,11 +5,13 @@ const webpack = require("webpack");
 const common = require("./common");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+
 const root = process.cwd();
 const context = resolve(root,"./src/client");
-
 module.exports = merge(common(context), {
-  entry: "./index.tsx",
+  entry: [
+    "./index.tsx" // the entry point of our app
+  ],
   output: {
     filename: "[name].[hash].js",
     path: resolve(root, "./dist/static/"),
@@ -19,7 +21,7 @@ module.exports = merge(common(context), {
   devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html.ejs",
+      template: "./index.html.ejs",
       filename: "./../index.html"
     })
   ]

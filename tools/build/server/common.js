@@ -4,7 +4,8 @@ const { CheckerPlugin } = require("awesome-typescript-loader");
 module.exports = context => ({
   target: "node",
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx"]
+    modules:[context,'node_modules'],
+    extensions: [".ts", ".js"]
   },
   context: context,
   module: {
@@ -24,7 +25,10 @@ module.exports = context => ({
       {
         test: /\.ts?$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "awesome-typescript-loader"]
+        use: ['babel-loader', {options:{
+          configFileName:`${context}/tsconfig.json`,
+        },loader:'awesome-typescript-loader'}],
+      
       }
     ]
   },

@@ -1,9 +1,9 @@
 // shared config (dev and prod)
 const {CheckerPlugin} = require('awesome-typescript-loader');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-
 module.exports = context =>({
   resolve: {
+    modules:[context,'node_modules'],
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   context: context,
@@ -17,7 +17,9 @@ module.exports = context =>({
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'awesome-typescript-loader'],
+        use: ['babel-loader', {options:{
+          configFileName:`${context}/tsconfig.json`,
+        },loader:'awesome-typescript-loader'}],
       },
       {
         test: /\.css$/,

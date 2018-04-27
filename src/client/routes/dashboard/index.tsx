@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { Wrapper } from 'client/components/Wrapper';
-import { Button } from 'client/components/Button';
+import { Wrapper } from 'components/Wrapper';
+import { Button } from 'components/Button';
 import { bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
 import { actions } from './reducer';
-// interface IState {
-// }
 
 interface IProps {
   dashboard: any;
@@ -18,8 +16,7 @@ class Dashboard extends React.Component<IProps, any> {
   }
 
   componentWillMount() {
-    this.props.actions.fetch()
-    // console.log(this.props.actions.fetch());
+    this.props.actions.fetch();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -27,11 +24,7 @@ class Dashboard extends React.Component<IProps, any> {
   }
 
   render() {
-    return (
-      <Wrapper>
-        I am Dashboard
-      </Wrapper>
-    );
+    return <Wrapper>I am Dashboard</Wrapper>;
   }
 }
 
@@ -42,8 +35,8 @@ const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
   actions: {
     fetch: bindActionCreators(actions.fetch, dispatch),
     success: bindActionCreators(actions.success, dispatch),
-    error : bindActionCreators(actions.error, dispatch),
-  },
+    error: bindActionCreators(actions.error, dispatch)
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
