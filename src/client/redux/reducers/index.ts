@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 import {
-  reducer as dashboardReducer,
-  IState as IDashboardReducerState
-} from 'routes/Dashboard/reducer';
+  reducer as counterReducer,
+  IState as ICounterReducerState
+} from 'routes/Counter/reducer';
 
 export const rootReducer = combineReducers({
-  dashboard: dashboardReducer
+  counter: counterReducer
 });
 
 export interface IAppState {
-  dashboard: IDashboardReducerState;
+  counter: ICounterReducerState;
 }

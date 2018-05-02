@@ -6,30 +6,30 @@ import { Wrapper } from 'components/Wrapper';
 
 import { actions, IState } from './reducer';
 
-interface IProps {
-  dashboard: IState;
-  actions: any;
+interface IProps extends IState {
+  update: any;
+  reset: any;
 }
 
-class Dashboard extends React.Component<IProps, any> {
+class Counter extends React.Component<IProps, null> {
   constructor(props: IProps) {
     super(props);
   }
 
   componentDidMount() {
-    this.props.actions.reset();
+    this.props.reset();
   }
 
   updateCounter = () => {
-    this.props.actions.update(this.props.dashboard.counter + 1);
+    this.props.update(this.props.counter + 1);
   };
 
   resetCounter = () => {
-    this.props.actions.reset();
+    this.props.reset();
   };
 
   render() {
-    const { counter } = this.props.dashboard;
+    const { counter } = this.props;
     return (
       <Wrapper>
         <div>{counter}</div>
@@ -42,13 +42,11 @@ class Dashboard extends React.Component<IProps, any> {
   }
 }
 
-const mapStateToProps = ({ dashboard }) => ({ dashboard });
+const mapStateToProps = ({ counter }) => ({ ...counter });
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
-  actions: {
-    update: bindActionCreators(actions.update, dispatch),
-    reset: bindActionCreators(actions.reset, dispatch)
-  }
+  update: bindActionCreators(actions.update, dispatch),
+  reset: bindActionCreators(actions.reset, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);

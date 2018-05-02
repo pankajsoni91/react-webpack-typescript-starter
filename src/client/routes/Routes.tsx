@@ -3,8 +3,7 @@ import { Route, NavLink } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
 import { Nav } from 'components/Nav';
 import Home from './Home';
-import About from './About';
-import Dashboard from './Dashboard';
+import Counter from './Counter';
 
 const App = () => {
   return (
@@ -16,20 +15,14 @@ const App = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/about' activeClassName='active'>
-            About
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/dashboard' activeClassName='active'>
-            Dashboard
+          <NavLink to='/counter' activeClassName='active'>
+            Counter
           </NavLink>
         </li>
       </Nav>
       <hr />
       <Route exact path='/' render={props => <Home />} />
-      <Route exact path='/about' render={props => <About />} />
-      <Route exact path='/dashboard' render={props => <Dashboard />} />
+      <Route exact path='/counter' render={props => <Counter />} />
     </div>
   );
 };
