@@ -1,24 +1,20 @@
-const express = require('express');
-const { resolve } = require('path');
+import * as express from 'express';
+import * as bodyParser from 'body-parser';
+import * as helmet from 'helmet';
+import api from 'routes/api';
+import pages from 'routes/pages';
 
 const app = express();
 const portNumber = 3000;
 const sourceDir = 'dist';
 
-const indexPage = resolve(__dirname, './index.html');
 app.use(express.static(sourceDir));
 
-// for api
-app.get('/api', (req, res) => {
-  res.json({
-    value: 10,
-  });
-});
-// for index.html
-app.get('*', (req, res, next) => {
-  console.log(req.originalUrl);
-  res.sendFile(indexPage);
-});
+app.use(helmet());
+app.use(bodyParser.json());
+
+app.use('/v1/api', api);
+app.use(pages);
 
 app.listen(portNumber, () => {
   console.log(`Express web server started: http://localhost:${portNumber}`);

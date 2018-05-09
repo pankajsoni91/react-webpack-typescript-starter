@@ -1,3 +1,12 @@
+import axios from 'axios';
+
 export function getDashboardData(): Promise<any> {
-  return fetch('/api').then(res => res.json());
+  return axios
+    .get('/v1/api')
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      console.log(error);
+    });
 }
