@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Wrapper } from 'components/Wrapper';
+import { IReducerState as IDashboardReducerState } from 'routes/Dashboard/reducer';
 
-interface IProps {
+export interface IProps extends IDashboardReducerState {
   data: {
     value: string;
   };
