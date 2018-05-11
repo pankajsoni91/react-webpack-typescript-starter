@@ -17,13 +17,12 @@ class Dashboard extends React.Component<IProps, any> {
     super(props);
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.actions.fetch();
   }
 
   render() {
     const { loading, data } = this.props.dashboard;
-    console.log('loading', loading);
     return <DashboardInfoWrapper loading={loading} data={data} />;
   }
 }
