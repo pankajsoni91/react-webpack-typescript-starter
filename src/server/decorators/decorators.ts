@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 // import { validateXSRFToken } from 'src/server/middlewares/auth';
 // import { validateVersion } from 'src/server/middlewares/validate-version';
 // import { postAclFilter } from 'utils/acl-engine';
-// import { API_HEADERS } from 'src/server/constants';
+import { API_HEADERS } from 'constants/';
 
 // import {
 //   validate,
@@ -24,7 +24,6 @@ function defaultErrorHandler(...args: any[]) {
  * METHOD MIDDLEWARE DECORATORS
  */
 // export const ValidateRequest = middlewareFactory(validate);
-
 // export const Authorize = (...args: any[]) => middlewareFactory(hasAccess(...args));
 
 /**
@@ -47,10 +46,6 @@ function isPromise(prop: any) {
     typeof prop.then === 'function'
   );
 }
-
-/**
- * DEFINATION CHANGING DECORATORS
- */
 
 /**
  * This wraps a function around try/catch with the given error handler.
@@ -103,10 +98,10 @@ export const SendJSON = (_target: any, _key: any, descriptor: any): any => {
   descriptor.value = (...args: any[]) => {
     const r = fn.apply(this, args);
     const sendResponse = ({ result, res, payload }: any) => {
-      // const requestId = _.get(payload, 'requestId');
-      // if (requestId) {
-      // res.setHeader(API_HEADERS.REQUEST_ID, requestId)
-      // };
+      const requestId = _.get(payload, 'requestId');
+      if (requestId) {
+        res.setHeader(API_HEADERS.REQUEST_ID, requestId);
+      }
       res.send(result);
     };
     // if promise then resolve by then
@@ -116,58 +111,6 @@ export const SendJSON = (_target: any, _key: any, descriptor: any): any => {
     return sendResponse({ r, ...args });
   };
 };
-
-/**
- * Sends the file
- * @param {string} fileName
- * @param {object} headers { headerName: headerValue }
- */
-// export const SendFile = (fileName, headers = {}) =>
-//   (target, key, descriptor) => {
-//     const fn = descriptor.value;
-
-//     descriptor.value = (...args) => {
-//       const r = fn.apply(this, args);
-//       const fName = _.isFunction(fileName) ? fileName(...args) : fileName;
-
-//       const sendFile = (file, req, res) => {
-//         res.writeHead(200, {
-//           'Content-Type': _.get(headers, 'Content-Type', 'application/octet-stream'),
-//           'Content-Disposition': `attachment; filename=${fName}`
-//         });
-//         res.write(file);
-//         res.end();
-//       };
-
-//       // if promise then resolve by then
-//       if (isPromise(r)) {
-//         return r.then((file) => sendFile(file, ...args));
-//       }
-
-//       return sendFile(r, ...args);
-//     };
-//   };
-
-/**
- *
- * ACL based filter of JSON results.
- *
- */
-// export const AclFilter = (target, key, descriptor) => {
-//   const fn = descriptor.value;
-
-//   descriptor.value = async (...args) => {
-//     const r = fn.apply(this, args);
-//     const applyFilter = (result, req) => postAclFilter(req, result);
-//     // if promise then resolve by then
-//     if (isPromise(r)) {
-//       const filteredResult = await r.then((result) => applyFilter(result, ...args));
-//       return filteredResult;
-//     }
-
-//     return applyFilter(r, ...args);
-//   };
-// };
 
 // (error, req, res, next, payload?)
 export const errorHandler = (...args: any[]) => {
